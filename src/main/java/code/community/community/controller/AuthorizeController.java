@@ -1,6 +1,5 @@
 package code.community.community.controller;
 
-import code.community.community.Mapper.UserMapper;
 import code.community.community.dto.AccesstokenDTO;
 import code.community.community.dto.GithubUserDTO;
 import code.community.community.model.User;

@@ -22,7 +22,7 @@ public class PublishController {
     private QuestionService questionService;
 
     @GetMapping("/publish/{id}")
-    public String edit(@PathVariable(name = "id")Integer id,Model model){
+    public String edit(@PathVariable(name = "id") Long id, Model model) {
         QuestionDTO question = questionService.getById(id);
         model.addAttribute("title", question.getTitle());
         model.addAttribute("description", question.getDescription());
@@ -35,12 +35,13 @@ public class PublishController {
     public String publish() {
         return "publish";
     }
+
     @PostMapping("/publish")
     public String doPublish(
             @RequestParam("title") String title,
             @RequestParam("description") String description,
             @RequestParam("tag") String tag,
-            @RequestParam("id")Integer id,
+            @RequestParam("id") Long id,
             HttpServletRequest request,
             Model model) {
         model.addAttribute("title", title);
@@ -60,8 +61,8 @@ public class PublishController {
         }
         User user = (User) request.getSession().getAttribute("user");
 
-        if(user == null){
-            model.addAttribute("error","用户未登录");
+        if (user == null) {
+            model.addAttribute("error", "用户未登录");
             return "/publish";
         }
 
